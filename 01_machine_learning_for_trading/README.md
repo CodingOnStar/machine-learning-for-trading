@@ -2,11 +2,12 @@
 
 Algorithmic trading relies on computer programs that execute algorithms to automate some or all elements of a trading strategy. **Algorithms** are a sequence of steps or rules designed to achieve a goal. They can take many forms and facilitate optimization throughout the investment process, from idea generation to asset allocation, trade execution, and risk management.
 
-**Machine learning** (ML) involves algorithms that learn rules or patterns from data to achieve a goal such as minimizing a prediction error. The examples in this book will illustrate how ML algorithms can extract information from data to support or automate key investment activities. These activities include observing the market and analyzing data to form expectations about the future and decide on placing buy or sell orders, as well as managing the resulting portfolio to produce attractive returns relative to the risk.
+**Machine learning** (ML) involves algorithms that learn rules or patterns from data to achieve<font color=#FD97B2> a goal such as minimizing a prediction error.</font>The examples in this book will illustrate how ML algorithms can extract information from data to support or automate key investment activities. These activities include observing the market and analyzing data to form expectations about the future and decide on placing buy or sell orders, as well as managing the resulting portfolio to produce attractive returns relative to the risk.
 
 Ultimately, the goal of active investment management is to generate alpha, defined as portfolio returns in excess of the benchmark used for evaluation. The **fundamental law of active management** postulates that the key to generating alpha is having accurate return forecasts combined with the ability to act on these forecasts (Grinold 1989; Grinold and Kahn 2000).
 
 It defines the **information ratio** (IR) to express the value of active management as the ratio of the return difference between the portfolio and a benchmark to the volatility of those returns. It further approximates the IR as the product of
+
 - The **information coefficient** (IC), which measures the quality of forecast as their rank correlation with the outcomes
 - The square root of the **breadth of a strategy** expressed as the number of independent bets on these forecasts
 
@@ -14,49 +15,52 @@ The competition of sophisticated investors in financial markets implies that mak
 
 Historically, algorithmic trading used to be more narrowly defined as the automation of trade execution to minimize the costs offered by the sell-side. This book takes a more comprehensive perspective since the use of algorithms in general and ML, in particular, has come to impact a broader range of activities from generating ideas and extracting signals from data to asset allocation, position-sizing, and testing and evaluating strategies.
 
-This chapter looks at industry trends that have led to the emergence of ML as a source of competitive advantage in the investment industry. We will also look at where ML fits into the investment process to enable algorithmic trading strategies. 
+This chapter looks at industry trends that have led to the emergence of ML as a source of competitive advantage in the investment industry. We will also look at where ML fits into the investment process to enable algorithmic trading strategies.
 
 ## Content
 
-1. [The rise of ML in the investment industry](#the-rise-of-ml-in-the-investment-industry)
-    * [From electronic to high-frequency trading](#from-electronic-to-high-frequency-trading)
-    * [Factor investing and smart beta funds](#factor-investing-and-smart-beta-funds)
-    * [Algorithmic pioneers outperform humans](#algorithmic-pioneers-outperform-humans)
-        - [ML driven funds attract $1 trillion AUM](#ml-driven-funds-attract-1-trillion-aum)
-        - [The emergence of quantamental funds](#the-emergence-of-quantamental-funds)
-    * [ML and alternative data](#ml-and-alternative-data)
-2. [Designing and executing an ML-driven strategy](#designing-and-executing-an-ml-driven-strategy)
-    * [Sourcing and managing data](#sourcing-and-managing-data)
-    * [From alpha factor research to portfolio management](#from-alpha-factor-research-to-portfolio-management)
-    * [Strategy backtesting](#strategy-backtesting)
-3. [ML for trading in practice: strategies and use cases](#ml-for-trading-in-practice-strategies-and-use-cases)
-    * [The evolution of algorithmic strategies](#the-evolution-of-algorithmic-strategies)
-    * [Use cases of ML for trading](#use-cases-of-ml-for-trading)
-        - [Data mining for feature extraction and insights](#data-mining-for-feature-extraction-and-insights)
-        - [Supervised learning for alpha factor creation and aggregation](#supervised-learning-for-alpha-factor-creation-and-aggregation)
-        - [Asset allocation](#asset-allocation)
-        - [Testing trade ideas](#testing-trade-ideas)
-        - [Reinforcement learning](#reinforcement-learning)
-4. [Resources & References](#resources--references)
-    * [Academic Research](#academic-research)
-    * [Industry News](#industry-news)
-    * [Books](#books)
-        - [Machine Learning](#machine-learning)
-    * [Courses](#courses)
-    * [ML Competitions & Trading](#ml-competitions--trading)
-    * [Python Libraries](#python-libraries)
+- [Machine Learning for Trading: From Idea to Execution](#machine-learning-for-trading-from-idea-to-execution)
+  - [Content](#content)
+  - [The rise of ML in the investment industry](#the-rise-of-ml-in-the-investment-industry)
+    - [From electronic to high-frequency trading](#from-electronic-to-high-frequency-trading)
+    - [Factor investing and smart beta funds](#factor-investing-and-smart-beta-funds)
+    - [Algorithmic pioneers outperform humans](#algorithmic-pioneers-outperform-humans)
+      - [ML driven funds attract $1 trillion AUM](#ml-driven-funds-attract-1-trillion-aum)
+      - [The emergence of quantamental funds](#the-emergence-of-quantamental-funds)
+    - [ML and alternative data](#ml-and-alternative-data)
+  - [Designing and executing an ML-driven strategy](#designing-and-executing-an-ml-driven-strategy)
+    - [Sourcing and managing data](#sourcing-and-managing-data)
+    - [From alpha factor research to portfolio management](#from-alpha-factor-research-to-portfolio-management)
+    - [Strategy backtesting](#strategy-backtesting)
+  - [ML for trading in practice: strategies and use cases](#ml-for-trading-in-practice-strategies-and-use-cases)
+    - [The evolution of algorithmic strategies](#the-evolution-of-algorithmic-strategies)
+    - [Use cases of ML for trading](#use-cases-of-ml-for-trading)
+      - [Data mining for feature extraction and insights](#data-mining-for-feature-extraction-and-insights)
+      - [Supervised learning for alpha factor creation and aggregation](#supervised-learning-for-alpha-factor-creation-and-aggregation)
+      - [Asset allocation](#asset-allocation)
+      - [Testing trade ideas](#testing-trade-ideas)
+      - [Reinforcement learning](#reinforcement-learning)
+  - [Resources \& References](#resources--references)
+    - [Academic Research](#academic-research)
+    - [Industry News](#industry-news)
+    - [Books](#books)
+      - [Machine Learning](#machine-learning)
+    - [Courses](#courses)
+    - [ML Competitions \& Trading](#ml-competitions--trading)
+    - [Python Libraries](#python-libraries)
 
 ## The rise of ML in the investment industry
 
 The investment industry has evolved dramatically over the last several decades and continues to do so amid increased competition, technological advances, and a challenging economic environment. This section reviews key trends that have shaped the overall investment environment overall and the context for algorithmic trading and the use of ML more specifically.
 
 The trends that have propelled algorithmic trading and ML to current prominence include:
+
 - Changes in the market microstructure, such as the spread of electronic trading and the integration of markets across asset classes and geographies
 - The development of investment strategies framed in terms of risk-factor exposure, as opposed to asset classes
 - The revolutions in computing power, data generation and management, and statistical methods, including breakthroughs in deep learning
 - The outperformance of the pioneers in algorithmic trading relative to human, discretionary investors
 
-In addition, the financial crises of 2001 and 2008 have affected how investors approach diversification and risk management. One outcome is the rise to low-cost passive investment vehicles in the form of exchange-traded funds (ETFs). Amid low yields and low volatility following the 2008 crisis that triggered large-scale asset purchases by leading central banks, cost-conscious investors shifted over $3.5 trillion from actively managed mutual funds into passively managed ETFs. 
+In addition, the financial crises of 2001 and 2008 have affected how investors approach diversification and risk management. One outcome is the rise to low-cost passive investment vehicles in the form of exchange-traded funds (ETFs). Amid low yields and low volatility following the 2008 crisis that triggered large-scale asset purchases by leading central banks, cost-conscious investors shifted over $3.5 trillion from actively managed mutual funds into passively managed ETFs.
 
 Competitive pressure is also reflected in lower hedge fund fees that dropped from the traditional 2 percent annual management fee and 20 percent take of profits to an average of 1.48 percent and 17.4 percent, respectively, in 2017.
 
@@ -108,7 +112,8 @@ Hedge funds have long looked for alpha through informational advantage and the a
 In contrast, the informational advantage from exploiting conventional and alternative data sources using ML is not related to expert and industry networks or access to corporate management, but rather the ability to collect large quantities of data and analyze them in real-time.
 
 Three trends have revolutionized the use of data in algorithmic trading strategies and may further shift the investment industry from discretionary to quantitative styles:
-- The exponential increase in the amount of digital data 
+
+- The exponential increase in the amount of digital data
 - The increase in computing power and data storage capacity at lower cost
 - The advances in ML methods for analyzing complex datasets
 
@@ -118,7 +123,7 @@ Three trends have revolutionized the use of data in algorithmic trading strategi
 
 ML can add value at multiple steps in the lifecycle of a trading strategy, and relies on key infrastructure and data resources. Hence, this book aims to addresses how ML techniques fit into the broader process of designing, executing, and evaluating strategies.
 
-An algorithmic trading strategy is driven by a combination of alpha factors that transform one or several data sources into signals that in turn predict future asset returns and trigger buy or sell orders. Chapter 2, Market and Fundamental Data and Chapter 3, Alternative Data for Finance cover the sourcing and management of data, the raw material and the single most important driver of a successful trading strategy.  
+An algorithmic trading strategy is driven by a combination of alpha factors that transform one or several data sources into signals that in turn predict future asset returns and trigger buy or sell orders. Chapter 2, Market and Fundamental Data and Chapter 3, Alternative Data for Finance cover the sourcing and management of data, the raw material and the single most important driver of a successful trading strategy.
 
 [Chapter 4, Alpha Factor Research](../04_alpha_factor_research) outlines a methodologically sound process to manage the risk of false discoveries that increases with the amount of data. [Chapter 5, Strategy Evaluation](../05_strategy_evaluation) provides the context for the execution and performance measurement of a trading strategy.
 
@@ -159,6 +164,7 @@ Quantitative strategies have evolved and become more sophisticated in three wave
 3. The third era is driven by investments in ML capabilities and alternative data to generate profitable signals for repeatable trading strategies. Factor decay is a major challenge: the excess returns from new anomalies have been shown to drop by a quarter from discovery to publication, and by over 50 percent after publication due to competition and crowding.
 
 Today, traders pursue a range of different objectives when using algorithms to execute rules:
+
 - Trade execution algorithms that aim to achieve favorable pricing
 - Short-term trades that aim to profit from small price movements, for example, due to arbitrage
 - Behavioral strategies that aim to anticipate the behavior of other market participants
@@ -167,6 +173,7 @@ Today, traders pursue a range of different objectives when using algorithms to e
 ### Use cases of ML for trading
 
 ML extracts signals from a wide range of market, fundamental, and alternative data, and can be applied at all steps of the algorithmic trading-strategy process. Key applications include:
+
 - Data mining to identify patterns, extract features and generate insights
 - Supervised learning to generate risk factors or alphas and create trade ideas
 - Aggregation of individual signals into a strategy
@@ -179,27 +186,30 @@ We briefly highlight some of these applications and identify where we will demon
 #### Data mining for feature extraction and insights
 
 The cost-effective evaluation of large, complex datasets requires the detection of signals at scale. There are several examples throughout the book:
+
 - **Information theory** helps estimate a signal content of candidate features is thus useful for extracting the most valuable inputs for an ML model. In Chapter 4, Financial Feature Engineering: How to Research Alpha Factors, we use mutual information to compare the potential values of individual features for a supervised learning algorithm to predict asset returns. Chapter 18 in De Prado (2018) estimates the information content of a price series as a basis for deciding between alternative trading strategies.
-- **Unsupervised learning** provides a broad range of methods to identify structure in data to gain insights or help solve a downstream task. We provide several examples: 
-    - In Chapter 13, [Unsupervised Learning: From Data-Driven Risk Factors to Hierarchical Risk Parity](../13_unsupervised_learning/README.md), we introduce clustering and dimensionality reduction to generate features from high-dimensional datasets. 
-    - In Chapter 15, [Topic Modeling for Earnings Calls and Financial News](../15_topic_modeling/README.md), we apply Bayesian probability models to summarize financial text data.
-    - In Chapter 20: [Autoencoders for Conditional Risk Factors](../20_autoencoders_for_conditional_risk_factors), we used deep learning to extract non-linear risk factors conditioned on asset characteristics and predict stock returns based on [Kelly et. al.](https://www.aqr.com/Insights/Research/Working-Paper/Autoencoder-Asset-Pricing-Models) (2020).
+- **Unsupervised learning** provides a broad range of methods to identify structure in data to gain insights or help solve a downstream task. We provide several examples:
+  - In Chapter 13, [Unsupervised Learning: From Data-Driven Risk Factors to Hierarchical Risk Parity](../13_unsupervised_learning/README.md), we introduce clustering and dimensionality reduction to generate features from high-dimensional datasets.
+  - In Chapter 15, [Topic Modeling for Earnings Calls and Financial News](../15_topic_modeling/README.md), we apply Bayesian probability models to summarize financial text data.
+  - In Chapter 20: [Autoencoders for Conditional Risk Factors](../20_autoencoders_for_conditional_risk_factors), we used deep learning to extract non-linear risk factors conditioned on asset characteristics and predict stock returns based on [Kelly et. al.](https://www.aqr.com/Insights/Research/Working-Paper/Autoencoder-Asset-Pricing-Models) (2020).
 - **Model transparency**: we emphasize model-specific ways to gain insights into the predictive power of individual variables and introduce a novel game-theoretic approach called SHapley Additive exPlanations (SHAP). We apply it to gradient boosting machines with a large number of input variables in Chapter 12, Boosting your Trading Strategy and the Appendix.
 
 #### Supervised learning for alpha factor creation and aggregation
 
 The most familiar rationale for applying ML to trading is to obtain predictions of asset fundamentals, price movements, or market conditions. A strategy can leverage multiple ML algorithms that build on each other:
 
-- **Downstream models** can generate signals at the portfolio level by integrating predictions about the prospects of individual assets, capital market expectations, and the correlation among securities. 
-- Alternatively, ML predictions can inform **discretionary trades** as in the quantamental approach outlined previously. 
+- **Downstream models** can generate signals at the portfolio level by integrating predictions about the prospects of individual assets, capital market expectations, and the correlation among securities.
+- Alternatively, ML predictions can inform **discretionary trades** as in the quantamental approach outlined previously.
 
 ML predictions can also **target specific risk factors**, such as value or volatility, or implement technical approaches, such as trend-following or mean reversion:
+
 - In Chapter 3, [Alternative Data for Finance: Categories and Use Cases](../03_alternative_data/README.md), we illustrate how to work with fundamental data to create inputs to ML-driven valuation models.
 - In Chapter 14, [Text Data for Trading: Sentiment Analysis](../14_working_with_text_data/README.md), Chapter 15, [Topic Modeling for Earnings Calls and Financial News](../15_topic_modeling/README.md), and Chapter 16, [Extracting Better Features: Word Embeddings for Earnings Calls and SEC Filings](../16_word_embeddings/README.md), we use alternative data on business reviews that can be used to project revenues for a company as an input for a valuation exercise.
 - In Chapter 9, [From Volatility Forecasts to Statistical Arbitrage: Time Series Models](../09_time_series_models/README.md), we demonstrate how to forecast macro variables as inputs to market expectations and how to forecast risk factors such as volatility
 - In Chapter 19, [RNNs for Trading: Multivariate Return Series and Text Data](../19_recurrent_neural_nets/README.md), we introduce recurrent neural networks that achieve superior performance with nonlinear time series data.
 
 #### Asset allocation
+
 ML has been used to allocate portfolios based on decision-tree models that compute a hierarchical form of risk parity. As a result, risk characteristics are driven by patterns in asset prices rather than by asset classes and achieve superior risk-return characteristics.
 
 - In Chapter 5, [Portfolio Optimization and Performance Evaluation](../05_strategy_evaluation/README.md), and Chapter 13, [Unsupervised Learning: From Data-Driven Risk Factors to Hierarchical Risk Parity](../13_unsupervised_learning/README.md), we illustrate how hierarchical clustering extracts data-driven risk classes that better reflect correlation patterns than conventional asset class definition (see Chapter 16 in De Prado, 2018).
@@ -213,6 +223,7 @@ In Chapter 21, [Generative Adversarial Networks for Synthetic Training Data](../
 #### Reinforcement learning
 
 Trading takes place in a competitive, interactive marketplace. Reinforcement learning aims to train agents to learn a policy function based on rewards; it is often considered as one of the most promising areas in financial ML. See, e.g. Hendricks and Wilcox (2014) and Nevmyvaka, Feng, and Kearns (2006) for applications to trade execution.
+
 - In Chapter 22, [Deep Reinforcement Learning: Building a Trading Agent](../22_deep_reinforcement_learning/README.md), we present key reinforcement algorithms like Q-learning to demonstrate the training of reinforcement algorithms for trading using OpenAI's Gym environment.
 
 ## Resources & References
@@ -223,21 +234,21 @@ Trading takes place in a competitive, interactive marketplace. Reinforcement lea
 - [The relationship between return and market value of common stocks](https://www.sciencedirect.com/science/article/pii/0304405X81900180), Rolf Banz,Journal of Financial Economics, March 1981
 - [The Arbitrage Pricing Theory: Some Empirical Results](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1540-6261.1981.tb00444.x), Marc Reinganum, Journal of Finance, 1981
 - [The Relationship between Earnings' Yield, Market Value and Return for NYSE Common Stock](https://pdfs.semanticscholar.org/26ab/311756099c8f8c4e528083c9b90ff154f98e.pdf), Sanjoy Basu, Journal of Financial Economics, 1982
-- [Bridging the divide in financial market forecasting: machine learners vs. financial economists](http://www.sciencedirect.com/science/article/pii/S0957417416302585), Expert Systems with Applications, 2016 
-- [Financial Time Series Forecasting with Deep Learning : A Systematic Literature Review: 2005-2019](http://arxiv.org/abs/1911.13288), arXiv:1911.13288 [cs, q-fin, stat], 2019 
-- [Empirical Asset Pricing via Machine Learning](https://doi.org/10.1093/rfs/hhaa009), The Review of Financial Studies, 2020 
-- [The Characteristics that Provide Independent Information about Average U.S. Monthly Stock Returns](http://academic.oup.com/rfs/article/30/12/4389/3091648), The Review of Financial Studies, 2017 
-- [Characteristics are covariances: A unified model of risk and return](http://www.sciencedirect.com/science/article/pii/S0304405X19301151), Journal of Financial Economics, 2019 
-- [Estimation and Inference of Heterogeneous Treatment Effects using Random Forests](https://doi.org/10.1080/01621459.2017.1319839), Journal of the American Statistical Association, 2018 
-- [An Empirical Study of Machine Learning Algorithms for Stock Daily Trading Strategy](https://www.hindawi.com/journals/mpe/2019/7816154/), Mathematical Problems in Engineering, 2019 
-- [Predicting stock market index using fusion of machine learning techniques](http://www.sciencedirect.com/science/article/pii/S0957417414006551), Expert Systems with Applications, 2015 
-- [Predicting stock and stock price index movement using Trend Deterministic Data Preparation and machine learning techniques](http://www.sciencedirect.com/science/article/pii/S0957417414004473), Expert Systems with Applications, 2015 
-- [Deep Learning for Limit Order Books](http://arxiv.org/abs/1601.01987), arXiv:1601.01987 [q-fin], 2016 
-- [Trading via Image Classification](http://arxiv.org/abs/1907.10046), arXiv:1907.10046 [cs, q-fin], 2019 
-- [Algorithmic trading review](http://doi.org/10.1145/2500117), Communications of the ACM, 2013 
-- [Assessing the impact of algorithmic trading on markets: A simulation approach](https://www.econstor.eu/handle/10419/43250), , 2008 
-- [The Efficient Market Hypothesis and Its Critics](http://www.aeaweb.org/articles?id=10.1257/089533003321164958), Journal of Economic Perspectives, 2003 
-- [The Arbitrage Pricing Theory Approach to Strategic Portfolio Planning](https://doi.org/10.2469/faj.v40.n3.14), Financial Analysts Journal, 1984 
+- [Bridging the divide in financial market forecasting: machine learners vs. financial economists](http://www.sciencedirect.com/science/article/pii/S0957417416302585), Expert Systems with Applications, 2016
+- [Financial Time Series Forecasting with Deep Learning : A Systematic Literature Review: 2005-2019](http://arxiv.org/abs/1911.13288), arXiv:1911.13288 [cs, q-fin, stat], 2019
+- [Empirical Asset Pricing via Machine Learning](https://doi.org/10.1093/rfs/hhaa009), The Review of Financial Studies, 2020
+- [The Characteristics that Provide Independent Information about Average U.S. Monthly Stock Returns](http://academic.oup.com/rfs/article/30/12/4389/3091648), The Review of Financial Studies, 2017
+- [Characteristics are covariances: A unified model of risk and return](http://www.sciencedirect.com/science/article/pii/S0304405X19301151), Journal of Financial Economics, 2019
+- [Estimation and Inference of Heterogeneous Treatment Effects using Random Forests](https://doi.org/10.1080/01621459.2017.1319839), Journal of the American Statistical Association, 2018
+- [An Empirical Study of Machine Learning Algorithms for Stock Daily Trading Strategy](https://www.hindawi.com/journals/mpe/2019/7816154/), Mathematical Problems in Engineering, 2019
+- [Predicting stock market index using fusion of machine learning techniques](http://www.sciencedirect.com/science/article/pii/S0957417414006551), Expert Systems with Applications, 2015
+- [Predicting stock and stock price index movement using Trend Deterministic Data Preparation and machine learning techniques](http://www.sciencedirect.com/science/article/pii/S0957417414004473), Expert Systems with Applications, 2015
+- [Deep Learning for Limit Order Books](http://arxiv.org/abs/1601.01987), arXiv:1601.01987 [q-fin], 2016
+- [Trading via Image Classification](http://arxiv.org/abs/1907.10046), arXiv:1907.10046 [cs, q-fin], 2019
+- [Algorithmic trading review](http://doi.org/10.1145/2500117), Communications of the ACM, 2013
+- [Assessing the impact of algorithmic trading on markets: A simulation approach](https://www.econstor.eu/handle/10419/43250), , 2008
+- [The Efficient Market Hypothesis and Its Critics](http://www.aeaweb.org/articles?id=10.1257/089533003321164958), Journal of Economic Perspectives, 2003
+- [The Arbitrage Pricing Theory Approach to Strategic Portfolio Planning](https://doi.org/10.2469/faj.v40.n3.14), Financial Analysts Journal, 1984
 
 ### Industry News
 
@@ -277,7 +288,7 @@ Trading takes place in a competitive, interactive marketplace. Reinforcement lea
 
 - [Machine Learning](http://www.cs.cmu.edu/~tom/mlbook.html), Tom Mitchell, McGraw Hill, 1997
 - [An Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/), Gareth James et al.
-    - Excellent reference for essential machine learning concepts, available free online
+  - Excellent reference for essential machine learning concepts, available free online
 - [Bayesian Reasoning and Machine Learning](http://web4.cs.ucl.ac.uk/staff/D.Barber/textbook/091117.pdf), Barber, D., Cambridge University Press, 2012 (updated version available on author's website)
 
 ### Courses
@@ -285,7 +296,7 @@ Trading takes place in a competitive, interactive marketplace. Reinforcement lea
 - [Algorithmic Trading](http://personal.stevens.edu/~syang14/fe670.htm), Prof. Steve Yang, Stevens Institute of Technology
 - [Machine Learning](https://www.coursera.org/learn/machine-learning), Andrew Ng, Coursera
 - [Deep Learning Specialization](http://deeplearning.ai/), Andrew Ng
-    - Andrew Ng’s introductory deep learning course
+  - Andrew Ng’s introductory deep learning course
 - Machine Learning for Trading Specialization, [Coursera](https://www.coursera.org/specializations/machine-learning-trading)
 - Machine Learning for Trading, Georgia Tech CS 7646, [Udacity](https://www.udacity.com/course/machine-learning-for-trading--ud501
 - Introduction to Machine Learning for Trading, [Quantinsti](https://quantra.quantinsti.com/course/introduction-to-machine-learning-for-trading)
@@ -293,12 +304,12 @@ Trading takes place in a competitive, interactive marketplace. Reinforcement lea
 ### ML Competitions & Trading
 
 - [IEEE Investment Ranking Challenge](https://www.crowdai.org/challenges/ieee-investment-ranking-challenge)
-    - [Investment Ranking Challenge : Identifying the best performing stocks based on their semi-annual returns](https://arxiv.org/pdf/1906.08636.pdf)
+  - [Investment Ranking Challenge : Identifying the best performing stocks based on their semi-annual returns](https://arxiv.org/pdf/1906.08636.pdf)
 - [Two Sigma Financial Modeling Challenge](https://www.kaggle.com/c/two-sigma-financial-modeling)
 - [Two Sigma: Using News to Predict Stock Movements](https://www.kaggle.com/c/two-sigma-financial-news)
 - [The Winton Stock Market Challenge](https://www.kaggle.com/c/the-winton-stock-market-challenge)
 - [Algorithmic Trading Challenge](https://www.kaggle.com/c/AlgorithmicTradingChallenge)
-   
+
 ### Python Libraries
 
 - matplotlib [docs](https://github.com/matplotlib/matplotlib)
@@ -314,54 +325,3 @@ Trading takes place in a competitive, interactive marketplace. Reinforcement lea
 - seaborn [docs](https://github.com/mwaskom/seaborn)
 - statsmodels [docs](https://github.com/statsmodels/statsmodels)
 - [Boosting numpy: Why BLAS Matters](http://markus-beuckelmann.de/blog/boosting-numpy-blas.html)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
